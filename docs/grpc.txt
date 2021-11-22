@@ -1,0 +1,9 @@
+For making a sample request : 
+For the testing purpose of the service, type the below commands in separate terminals. Inside the grpc_server directory within the virtual environment type:
+1. python __init__.py
+2. python grpc_writer.py
+
+
+Documentation of the endpoint:
+1. The service runs on localhost:5005
+2. Within k8s, the service runs on localhost:30003
