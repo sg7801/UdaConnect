@@ -1,0 +1,249 @@
+openapi: 3.0.3
+info:
+  description: API endpoint that creates Person and locations. It also retrieves them along with their connections.
+  version: "1.0.0"
+  title: API endpoint
+paths:
+  "/api/persons":
+    post:
+      summary: New Person 
+      operationId: CreatePersonResource
+      description: To create a new person
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreatePerson'
+        description: Person Added
+      responses:
+        '201':
+          description: Successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreatePerson'
+        '400':
+          description: 'Invalid'
+    get:
+      summary: Get all person available in UdaConnect
+      operationId: getPersonResources
+      description: Gets all person availabe in the Application
+      responses:
+        '200':
+          description: Get all 
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/GetPersons'
+        '400':
+          description: Invalid
+  '/api/persons/{person_id}':
+    parameters:
+      - in: path
+        description: Unique ID for each person
+        name: person_id
+        required: true
+        schema:
+          $ref: '#/components/schemas/GetPerson'
+    get:
+      summary: Retrieves a person
+      operationId: getPersonResource
+      description: Retrieves a person
+      responses:
+        '200':
+          description: Retrieves specific Person
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/GetPersons'
+        '400':
+          description: Invalid 
+  "/api/locations":
+    post:
+      summary: Creates a new Location
+      operationId: CreateLocationResource
+      description: New Location
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateLocation'
+        description: Location Added
+      responses:
+        '201':
+          description: Successfully added 
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateLocation'
+        '400':
+          description: 'Invalid'
+  '/api/locations/{location_id}':
+    parameters:
+      - in: path
+        description: Unique ID for each location
+        name: location_id
+        required: true
+        schema:
+          $ref: '#/components/schemas/GetLocation'
+    get:
+      summary: Gets specific location
+      operationId: getLocationResource
+      description: Gets specific location
+      responses:
+        '200':
+          description: Get a specific Location
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/GetLocation'
+        '400':
+          description: Invalid
+  '/api/persons/{person_id}/connection{start_date}&{end_date}&{distance}':
+    parameters:
+      - in: path
+        description: Unique ID for person
+        name: person_id
+        required: true
+        schema:
+          $ref: '#/components/schemas/GetConnection'
+      - in: path
+        description: Start Date
+        name: start_date
+        required: true
+        schema:
+          $ref: '#/components/schemas/GetConnection'
+      - in: path
+        description: End Date 
+        name: end_date
+        required: true
+        schema:
+          $ref: '#/components/schemas/GetConnection'
+      - in: path
+        description: Distance b/w locations & connections
+        name: distance
+        required: true
+        schema:
+          $ref: '#/components/schemas/GetConnection'
+    get:
+      summary: Get a Connection 
+      operationId: getConnectionResource
+      description: Get a Connection
+      responses:
+        '200':
+          description: Get connection
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/GetConnection'
+        '400':
+          description: Invalid
+components:
+  schemas:
+    GetPersons:
+      type: object
+      required:
+        - id
+        - first_name
+        - last_name
+        - company_name
+      properties:
+        id:
+          type: string
+          example: "7"
+        first_name:
+          type: string
+          example: 'Srishti'
+        last_name:
+          type: string
+          example: 'Guleria'
+        company_name:
+          type: string
+          example: 'ABC'
+    CreatePerson:
+      type: object
+      required:
+        - id
+        - first_name
+        - last_name
+        - company_name
+      properties:
+        id:
+          type: string
+          example: "2"
+        first_name:
+          type: string
+          example: 'Adam'
+        last_name:
+          type: string
+          example: 'Jons'
+        company_name:
+          type: string
+          example: 'ABC'
+    GetPerson:
+      type: string
+      example: 'Example: /api/persons/7'
+      required:
+        - id
+      properties:
+        id:
+          type: string
+          example: "7"
+    GetConnection:
+      type: string
+      example: 'Example: /api/persons/7/connection?start_date=2021-10-01&end_date=2021-10-17&distance=5'
+      required:
+        - person_id
+        - start_date
+        - end_date
+        - distance
+      properties:
+        person_id:
+          type: string
+          example: "4"
+        start_date:
+          type: string
+          example: '2021-06-15'
+        end_date:
+          type: string
+          example: '2021-11-22'
+        distance:
+          type: string
+          example: "6"
+    CreateLocation:
+      type: object
+      required:
+        - person_id
+        - creation_time
+        - latitude
+        - longitude
+      properties:
+        person_id:
+          type: string
+          example: "1"
+        creation_time:
+          type: string
+          example: '2021-12-22T12:22:07'
+        latitude:
+          type: string
+          example: "-2.1"
+        longitude:
+          type: string
+          example: "1.3"
+    GetLocation:
+      type: string
+      example: 'Example: /api/location/4'
+      required:
+        - id
+      properties:
+        id:
+          type: string
+          example: "4"
