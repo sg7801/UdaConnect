@@ -1,0 +1,8 @@
+Person Microservice : REST API that keeps the individual person's information 
+Connection Microservice : It recieves the data via Person Microservice
+Location service is separated into two microservices :
+  1. location event producer microservice 
+  2. location consumer microservice
+location event producer microservice: It produces the location that is sent via mobile device. Its kafka cluster recieves the location data consumed by the location consumer microservice. It uses the React Frontend to interact via RESTFul API.
+gRPC : It allows the efficient requirement matching of user data concurrently
+Postgres Database : It stores the data 
