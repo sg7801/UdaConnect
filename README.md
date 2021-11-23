@@ -147,6 +147,8 @@ Your architecture diagram should focus on the services and how they talk to one 
 2. [Google Docs](docs.google.com) Drawings (In a Google Doc, _Insert_ - _Drawing_ - _+ New_)
 3. [Diagrams.net](https://app.diagrams.net/)
 
+![architecture_design](https://user-images.githubusercontent.com/61888364/142958855-2239f3cb-90aa-438b-b5bb-5ed4ea58396c.png)
+
 ## Tips
 * We can access a running Docker container using `kubectl exec -it <pod_id> sh`. From there, we can `curl` an endpoint to debug network issues.
 * The starter project uses Python Flask. Flask doesn't work well with `asyncio` out-of-the-box. Consider using `multiprocessing` to create threads for asynchronous behavior in a standard Flask application.
