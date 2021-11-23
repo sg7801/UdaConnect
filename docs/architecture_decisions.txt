@@ -1,4 +1,0 @@
-Architecture Diagrams:
-- REST endpoints are used to expose the API. It will be able to handle high volumes of data as REST can use other services within its architecture since REST has a layered architecture.
-- Kafka ensures reliability for the messages passed within it along with good speed. We use it inside REST as all the UdaConnect services are separated from each other. It will allow them to easily process data. 
-- gRPC service stays hidden within Kafka. It allows the services within the organisation to communicate with each other since these services are separated from each other. It also provides good security.
