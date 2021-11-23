@@ -1,0 +1,12 @@
+Sample Requests:
+Refer to the modules/location event producer -> service/client.py to get more info on making a sample request.
+client.py sends the request to location event producer service through Protobuf message.
+We have used gRPC for the structured data transportation like below location_event.proto:
+message LocationEventMessage {
+  int32 userId = 1;
+  int32 latitude = 2;
+  int32 longitude = 3;
+}
+service ItemService {
+  rpc Create(LocationEventMessage) returns (LocationEventMessage);
+}
