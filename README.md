@@ -147,7 +147,7 @@ Your architecture diagram should focus on the services and how they talk to one 
 2. [Google Docs](docs.google.com) Drawings (In a Google Doc, _Insert_ - _Drawing_ - _+ New_)
 3. [Diagrams.net](https://app.diagrams.net/)
 
-![architecture_design](https://user-images.githubusercontent.com/61888364/143003694-d30f13dd-1bde-4487-9f9c-c9f12b8298ee.png)
+![architecture_design](https://user-images.githubusercontent.com/61888364/143092550-85a0f66c-a090-47c3-a0e6-db6c0668863c.png)
 
 ## Tips
 * We can access a running Docker container using `kubectl exec -it <pod_id> sh`. From there, we can `curl` an endpoint to debug network issues.
