@@ -27,7 +27,8 @@ def write_to_db(location):
     print(table_insert)
     cur.execute(table_insert)
 
-
-for topic in consumer:
-    location_message = json.loads(topic.value.decode('utf-8'))
-    print (location_message)
+while True:
+    for topic in consumer:
+        message = topic.value.decode('utf-8')
+        location_message = json.loads(message)
+        print(location_message)
